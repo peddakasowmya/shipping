@@ -1,19 +1,8 @@
-pipeline { 
-    agent {
-        labels 'ws'
-    }
-    stages {
-        stage('Lint Checks') {      // Style checks
-            steps {
-                sh "echo performing Lint Checks"
-                
-                // sh "mvn checkstyle:check || true"
-            }
-        }
-        stage('Static Code Analysis') {     // security code checks
-            steps {
-                sh "echo Static Checks ...."
-            }
-        }
-    }
-}
+@Library('shared-library') _
+
+env.COMPONENT="catalogue"
+env.APPTYPE="nodejs"
+// call is the function that will be called by default. So, we are delcaring the entire pipeline in the vars/nodejs.groovy
+java()
+ 
+ 
